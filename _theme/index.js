@@ -4,14 +4,7 @@ var path = require('path');
 
 module.exports = {
   lazyLoad: false,
-  pick: {
-    posts(markdownData) {
-      return {
-        meta: markdownData.meta,
-        description: markdownData.description,
-      }
-    }
-  },
+  home: '/', 
   plugins: [
     'bisheng-plugin-antd',
     'bisheng-plugin-react?lang=__react'

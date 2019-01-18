@@ -4,3 +4,4 @@ npm-debug.log
 _site/
 package-lock.json
 dist
+.DS_Store

@@ -2,3 +2,22 @@ html, body{
   margin: 0;
   padding: 0;
 }
+
+body{
+  background: #ccc;
+  /* background: linear-gradient(to right bottom, #ffdc79, #c4e4a2, #0090ff); */
+  /*background: linear-gradient(to right bottom, #ffdc79, #c4e4a2, #0090ff);*/
+}
+
+.demo-item{
+  padding: 20px;
+  width: 900px;
+  margin: 20px auto;
+
+  background: #efefef;
+  border-radius: 8px;
+}
+.demo-item-code{
+  height: 300px;
+  overflow: scroll;
+} 
