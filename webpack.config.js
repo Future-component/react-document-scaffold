@@ -1,46 +1,40 @@
-var webpack = require('webpack');
-var path = require('path')
+// This config is for building dist files
+const webpack = require('webpack');
+const getWebpackConfig = require('antd-tools/lib/getWebpackConfig');
 
-module.exports = {
-  entry: './lib/AMap.js',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: process.env.NODE_ENV === 'production' ? 'react-a.min.js' : 'react-a.js',
-    library: 'ReactA',
-    libraryTarget: 'umd',
-  },
-  module: {
-    rules: [
-      {
-        enforce: 'pre',
-        test: /\.jsx?$/,
-        include: path.resolve(__dirname, 'components'),
-        exclude: path.resolve(__dirname, 'node_modules'),
-        loader: 'eslint-loader'
-      },
-      {
-        test: /\.jsx?$/,
-        loaders: ['babel-loader'],
-        include: path.resolve(__dirname, 'lib'),
-        exclude: path.resolve(__dirname, 'node_modules') 
-      },
-      {
-        test: /\.png$/,
-        loader: 'url-loader',
-        exclude:/node_modules/,
-        query: {
-          limit: 10000,
-          name: '[name].[ext]'
-        }
-      },
-      {
-        test: /\.css$/,
-        loader: ['style-loader', 'css-loader']
-      }
-    ]
-  },
-  // externals: {
-  //   'react': 'react',
-  //   'react-dom': 'react-dom',
-  // }
-};
+// noParse still leave `require('./locale' + name)` in dist files
+// ignore is better
+// http://stackoverflow.com/q/25384360
+function ignoreMomentLocale(webpackConfig) {
+  delete webpackConfig.module.noParse;
+  webpackConfig.plugins.push(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/));
+}
+
+function addLocales(webpackConfig) {
+  let packageName = 'antd-with-locales';
+  if (webpackConfig.entry['antd.min']) {
+    packageName += '.min';
+  }
+  webpackConfig.entry[packageName] = './index-with-locales.js';
+  webpackConfig.output.filename = '[name].js';
+}
+
+function externalMoment(config) {
+  config.externals.moment = {
+    root: 'moment',
+    commonjs2: 'moment',
+    commonjs: 'moment',
+    amd: 'moment',
+  };
+}
+
+const webpackConfig = getWebpackConfig(false);
+if (process.env.RUN_ENV === 'PRODUCTION') {
+  webpackConfig.forEach((config) => {
+    ignoreMomentLocale(config);
+    externalMoment(config);
+    addLocales(config);
+  });
+}
+
+module.exports = webpackConfig;

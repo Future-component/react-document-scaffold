@@ -34,6 +34,12 @@ class Footer extends React.Component {
                 <div>
                   <a target="_blank " href="https://github.com/ant-design/landings">
                     Landings GitHub
+                    <FormattedMessage id="app.footer.repo" />
+                  </a>
+                </div>
+                <div>
+                  <a target="_blank " href="https://github.com/ant-motion">
+                    <FormattedMessage id="app.footer.template" />
                   </a>
                 </div>
               </div>
