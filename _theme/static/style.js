@@ -1,6 +1,9 @@
 import './main.css';
-import './layout.css';
-import './header.css';
+import './layout.less';
+import './header.less';
 import './nav.less';
 import './cover.less';
-import './highlight.less'; 
+import './highlight.less';
+import './doc.less';
+import './notfound.less';
+import './footer.less'; 

@@ -1,13 +1,12 @@
 import React from 'react';
 import Header from './Header';
-import Nav from './Nav';
 require('../static/style');
 require('antd/dist/antd.css');
+
 export default function Layout(props){
-  console.log('props', props)
   return <div className="wrapper">
     <Header/>
-    <div>
+    <div className="layout">
       {props.children}
     </div>
   </div>

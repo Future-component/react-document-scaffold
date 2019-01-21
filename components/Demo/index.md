@@ -6,8 +6,6 @@ title: 一篇测试文档
 # Hello Test
 
 <!-- ```jsx
-import AMap from 'react-amap';
-const Circle = AMap.Circle;
 class App extends React.Component{
     constructor(props){
         super(props);
@@ -19,9 +17,7 @@ class App extends React.Component{
     
     render(){
         return <div style={{width: '400px', height: '300px'}}>
-            <AMap plugins={['toolbar']} center={this.state.center}>
-                <Circle center={ this.state.center } radius={ this.state.radius }/>
-            </AMap>
+          1111 
         </div>
     }
 }

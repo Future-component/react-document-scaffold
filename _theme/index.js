@@ -13,8 +13,17 @@ module.exports = {
     path: '/',
     component: './template/Cover'
   }, {
-    path: '/component/:doc',
+    path: '/404',
+    component: './template/NotFound'
+  }, {
+    path: '/components/:doc',
     dataPath: '/:doc',
-    component: './template/Doc'
+    component: './template/Components'
+  }, {
+    path: '/articles/:doc',
+    component: './template/Articles'
+  // }, {
+  //   path: '/playground',
+  //   component: './template/Playground'
   }]
 };
