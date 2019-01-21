@@ -4,20 +4,24 @@ module.exports = {
   entry: './lib',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js',
-    filename: 'doc.js',
-    library: 'doc',
+    filename: process.env.NODE_ENV === 'production' ? 'react-a.min.js' : 'react-a.js',
+    library: 'ReactA',
     libraryTarget: 'umd',
   },
   module: {
-    loaders: [
+    rules: [
+      {
+        enforce: 'pre',
+        test: /\.jsx?$/,
+        include: path.resolve(__dirname, 'components'),
+        exclude: path.resolve(__dirname, 'node_modules'),
+        loader: 'eslint-loader'
+      },
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
-        exclude: /node_modules/,
-        query: {
-          presets: ['es2015', 'react']
-        }
+        include: path.resolve(__dirname, 'components'),
+        exclude: path.resolve(__dirname, 'node_modules') 
       },
       {
         test: /\.png$/,
