@@ -1,5 +1,3 @@
-var path = require('path');
-
 module.exports = {
   exclude: /should-be-ignore/,
   source: ['./components', './articles'],
@@ -19,8 +17,8 @@ module.exports = {
   entry: {
     index: {
       theme: './_theme',
-      htmlTemplate: './_theme/static/template.html', 
-    }
+      htmlTemplate: './_theme/static/template.html',
+    },
   },
   port: 8888,
   webpackConfig(config) {
@@ -29,5 +27,5 @@ module.exports = {
       'react-router': 'react-router/umd/ReactRouter',
     };
     return config;
-  }
-}; 
+  },
+};

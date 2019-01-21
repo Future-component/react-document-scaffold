@@ -1,0 +1,11 @@
+language: generic # don't install any environment
+
+before_install:
+ - chmod +x ./scripts/compile.sh
+script:
+  - |
+    if [ "$TEST_TYPE" = lint ]; then
+      npm run lint
+    elif [ "$TEST_TYPE" = deploy ]; then
+      bash ./scripts/deploy.sh
+    fi

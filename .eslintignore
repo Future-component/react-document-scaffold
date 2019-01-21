@@ -1,0 +1,10 @@
+node_modules/
+_site
+_theme
+components
+dist
+scripts
+lib
+webpack.config.js
+theme.js
+gulpfile.js

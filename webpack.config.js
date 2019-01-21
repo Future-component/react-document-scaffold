@@ -1,7 +1,8 @@
 var webpack = require('webpack');
+var path = require('path')
 
 module.exports = {
-  entry: './lib',
+  entry: './lib/AMap.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: process.env.NODE_ENV === 'production' ? 'react-a.min.js' : 'react-a.js',
@@ -19,8 +20,8 @@ module.exports = {
       },
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader',
-        include: path.resolve(__dirname, 'components'),
+        loaders: ['babel-loader'],
+        include: path.resolve(__dirname, 'lib'),
         exclude: path.resolve(__dirname, 'node_modules') 
       },
       {
@@ -38,8 +39,8 @@ module.exports = {
       }
     ]
   },
-  externals: {
-    'react': 'react',
-    'react-dom': 'react-dom',
-  }
+  // externals: {
+  //   'react': 'react',
+  //   'react-dom': 'react-dom',
+  // }
 };

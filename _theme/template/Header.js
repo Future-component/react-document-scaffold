@@ -3,7 +3,6 @@ import { Link } from 'react-router'
 import { Icon } from 'antd';
 
 export default function Header(props) {
-  console.log(props)
   const path = window.location.href
   return <header id="header">
     <div className="header-inner">
@@ -16,4 +15,4 @@ export default function Header(props) {
       </ul>
     </div>
   </header>
-} 
+}
